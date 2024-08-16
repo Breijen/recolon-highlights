@@ -1,0 +1,34 @@
+{
+  "name": "rcn",
+  "displayName": "Recolon",
+  "description": "Recolon Programming Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rcn",
+        "aliases": [
+          "Recolon",
+          "rcn"
+        ],
+        "extensions": [
+          ".rcn"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rcn",
+        "scopeName": "source.rcn",
+        "path": "./syntaxes/rcn.tmLanguage.json"
+      }
+    ]
+  }
+}

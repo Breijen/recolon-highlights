@@ -1,0 +1,129 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Recolon",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#reserved-words"
+		},
+		{
+			"include": "#ctrl-statements"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#function-calls"
+		},
+		{
+			"include": "#variables"
+		}
+	],
+	"repository": {
+		"numbers": {
+			"patterns": [{
+				"name": "keyword.other.unit.suffix.integer.rcn",
+				"match": "^-?[0-9][0-9\\.]+$"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.rcn",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rcn",
+					"match": "\\\\."
+				}
+			]
+		},
+		"ctrl-statements": {
+			"patterns": [{
+				"name": "keyword.control.rcn",
+				"match": "\\b(if|while|for|return|compose|in|import|as|elif|else|var)\\b"
+			}]
+		},
+		"reserved-words": {
+			"patterns": [{
+				"match": "\\b(import|length|print|log|err|io|math)\\b",
+				"name": "entity.name.function.member.rcn"
+			}]
+		},
+		"expression": {
+			"patterns": [
+				{ "include": "#reserved-words" },
+				{ "include": "#numbers" },
+				{ "include": "#paren-expression" },
+				{ "include": "#strings" }
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.rcn",
+					"begin": "#",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.rcn"
+						}
+					},
+					"end": "$"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{ 
+					"match": "--",
+					"name": "keyword.operator.decrement.rcn"
+ 				},
+				{ 
+					"match": "\\+\\+",
+					"name": "keyword.operator.increment.rcn"
+ 				},
+				{
+					"match": "\\+=|\\-=|\\*=|\\/=",
+					"name": "keyword.operator.assignment.compound.rcn"
+				},
+				{
+					"match": "\\+|\\-|\\*|\\/",
+					"name": "keyword.operator.arithmetic.rcn"
+				},
+				{
+					"match": "==",
+					"name": "keyword.operator.comparison.rcn"
+				}
+			]
+		},
+		"functions": {
+			"patterns": [{
+				"name": "entity.name.function.definition.rcn",
+				"match": "\\bfn\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+			}]
+		},
+		"function-calls": {
+			"patterns": [{
+				"name": "entity.name.function.call.rcn",
+				"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+			}]
+		},
+		"variables": {
+			"patterns": [{
+				"name": "variable.other.readwrite.rcn",
+				"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+			}]
+		}
+	},
+	"scopeName": "source.rcn"
+}
