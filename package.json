@@ -3,6 +3,7 @@
   "displayName": "Recolon",
   "description": "Recolon Programming Language",
   "version": "0.0.1",
+  "publisher": "Breijen",
   "engines": {
     "vscode": "^1.92.0"
   },

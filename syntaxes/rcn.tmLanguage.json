@@ -15,7 +15,7 @@
 			"include": "#numbers"
 		},
 		{
-			"include": "#reserved-words"
+			"include": "#keywords"
 		},
 		{
 			"include": "#ctrl-statements"
@@ -33,8 +33,8 @@
 	"repository": {
 		"numbers": {
 			"patterns": [{
-				"name": "keyword.other.unit.suffix.integer.rcn",
-				"match": "^-?[0-9][0-9\\.]+$"
+				"name": "constant.numeric.rcn",
+				"match": "-?[0-9]+(\\.[0-9]+)?"
 			}]
 		},
 		"strings": {
@@ -51,18 +51,18 @@
 		"ctrl-statements": {
 			"patterns": [{
 				"name": "keyword.control.rcn",
-				"match": "\\b(if|while|for|return|compose|in|import|as|elif|else|var)\\b"
+				"match": "\\b(if|while|for|return|compose|in|import|as|elif|else|var|const|struct|fn)\\b"
 			}]
 		},
-		"reserved-words": {
+		"keywords": {
 			"patterns": [{
-				"match": "\\b(import|length|print|log|err|io|math)\\b",
-				"name": "entity.name.function.member.rcn"
+				"match": "\\b(true|false|nil|log|err|length|pop|push)\\b",
+				"name": "constant.language.rcn"
 			}]
 		},
 		"expression": {
 			"patterns": [
-				{ "include": "#reserved-words" },
+				{ "include": "#keywords" },
 				{ "include": "#numbers" },
 				{ "include": "#paren-expression" },
 				{ "include": "#strings" }
@@ -101,8 +101,12 @@
 					"name": "keyword.operator.arithmetic.rcn"
 				},
 				{
-					"match": "==",
+					"match": "==|!=|<=|>=|<|>",
 					"name": "keyword.operator.comparison.rcn"
+				},
+				{
+					"match": "\\b(and|or)\\b",
+					"name": "keyword.operator.logical.rcn"
 				}
 			]
 		},
